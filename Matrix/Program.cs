@@ -4,11 +4,13 @@
 // 1 -3,3 8 -9,9
 // 8 7,8 -7,1 9
 
+// подзадачи: задать размер руками, создать, заполнить, напечатать 
+
 int Input(string msg)
 {
   bool flag = false;
   int value = 0;
-  while (!flag)
+  while (!flag)  
   {
     Console.Write(msg + " ");
     flag = int.TryParse(Console.ReadLine(), out value);
@@ -16,22 +18,24 @@ int Input(string msg)
   return value;
 }
 
-int[,] CreateArray(int m, int n) => new int[m, n];
+double[,] CreateArray(int m, int n) => new double[m, n];
 
-void FillMatrix(int [,] mat, int min = -10, int max = 10)
+void FillMatrix(double[,] mat, int min = -100, int max = 100)
 {
   int row = mat.GetLength(0);
   int columns = mat.GetLength(1);
+  Random numbers = new Random();
     for (int i = 0; i < row; i++)
     {
         for (int j = 0; j < columns; j++)
         {
-        mat[i, j] = new Random().Next(min, max);
+        mat[i, j] = Math.Round(numbers.Next(min, max) * 0.1, 1); 
         }
     }
 }
 
-void PrintMatrix(int [,] mat)
+
+void PrintMatrix(double [,] mat)
 {
   int row = mat.GetLength(0);
   int columns = mat.GetLength(1);
@@ -40,20 +44,15 @@ void PrintMatrix(int [,] mat)
     {
         for (int j = 0; j < columns; j++)
         {
-        Console.Write($"{mat[i, j], 3} ");
+        Console.Write("{0,05}", mat[i, j]);
         }
     Console.WriteLine();
     }
 }
 
-
 int rows = Input("Введите количество строк: ");
 int columns = Input("Введите количество столбцов: ");
-
-
-int [,] matrix = new int [rows, columns];
-//PrintMatrix(matrix);
-//Console.WriteLine();
-FillMatrix(matrix);
+double [,] matrix = new double [rows, columns];
 CreateArray(rows, columns);
+FillMatrix(matrix);
 PrintMatrix(matrix);
