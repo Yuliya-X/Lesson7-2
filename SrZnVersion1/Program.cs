@@ -51,20 +51,20 @@ void PrintMatrix(double [,] mat)
 
 void GetSrZn(double[,] mat) 
 {
-int row = mat.GetLength(0);
-int columns = mat.GetLength(1);
-double[] sum = new double[columns]; 
-double result = 0;
+    int row = mat.GetLength(0);
+    int columns = mat.GetLength(1);
     for (int j = 0; j < columns; j++)
     {
+        double sum = 0;
         for (int i = 0; i < row; i++)
         {
-            sum[j] += mat[i, j];
-            result = sum[j] / row;
+            sum += mat[i, j];
         }
-    Console.Write(result + "; ");
+    sum = sum / row;
+    Console.Write(sum + "; ");
     }
 }
+
 
 int rows = Input("Введите количество строк: ");
 int columns = Input("Введите количество столбцов: ");
