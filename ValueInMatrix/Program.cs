@@ -61,8 +61,8 @@ void GetValue(int [,] mat, int n, int m)
 
 int rows = Input("Введите количество строк: ");
 int columns = Input("Введите количество столбцов: ");
-int n = Input("Введите строку: ");
-int m = Input("Введите столбец: ");
+int n = Input("Введите индекс строки: ");
+int m = Input("Введите индекс столбца: ");
 int [,] matrix = new int [rows, columns];
 CreateArray(rows, columns);
 FillMatrix(matrix);
